@@ -14,7 +14,6 @@ namespace Planner
                 Depth = 100,
             };
 
-            OneMain.Construct();
             OneMain.Purchase("Adam Richguy");
 
             Building TwoMain = new Building("2 Main St.")
@@ -24,7 +23,6 @@ namespace Planner
                 Depth = 200,
             };
 
-            TwoMain.Construct();
             TwoMain.Purchase("Mo Lotsamoney");
 
             Building ThreeMain = new Building("3 Main St.")
@@ -34,7 +32,6 @@ namespace Planner
                 Depth = 300,
             };
 
-            ThreeMain.Construct();
             ThreeMain.Purchase("Andy Megawealthy");
 
             List<Building> buildings = new List<Building>{
@@ -44,8 +41,9 @@ namespace Planner
             };
 
             foreach (Building thisBuilding in buildings)
-            {
-                Console.WriteLine(thisBuilding.)
+            {   
+                thisBuilding.Construct();
+                Console.WriteLine(thisBuilding);
             }
         }
     }

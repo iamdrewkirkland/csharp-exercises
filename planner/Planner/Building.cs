@@ -33,6 +33,18 @@ namespace Planner
         {
             _address = address;
 
+
+        }
+        public override string ToString()
+        {
+            return $@"
+            {_address}
+            -------------
+            Designed by {_designer}
+            Constructed on {_dateConstructed}
+            Owned by {_owner}
+            {Volume} cubic units of space
+            ";
         }
     }
-}
+};
