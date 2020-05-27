@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Planner
 {
@@ -35,8 +36,17 @@ namespace Planner
 
             ThreeMain.Construct();
             ThreeMain.Purchase("Andy Megawealthy");
-            
 
+            List<Building> buildings = new List<Building>{
+                OneMain,
+                TwoMain,
+                ThreeMain,
+            };
+
+            foreach (Building thisBuilding in buildings)
+            {
+                Console.WriteLine(thisBuilding.)
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Planner
 {
     class Building
     {
-        private string _designer;
+        private string _designer = "Drew Kirkland";
         private DateTime _dateConstructed;
         private string _address;
         private string _owner;
