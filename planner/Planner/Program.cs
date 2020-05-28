@@ -13,7 +13,7 @@ namespace Planner
                 Width = 100,
                 Depth = 100,
             };
-
+            OneMain.Construct();
             OneMain.Purchase("Adam Richguy");
 
             Building TwoMain = new Building("2 Main St.")
@@ -22,7 +22,7 @@ namespace Planner
                 Width = 200,
                 Depth = 200,
             };
-
+            TwoMain.Construct();
             TwoMain.Purchase("Mo Lotsamoney");
 
             Building ThreeMain = new Building("3 Main St.")
@@ -31,20 +31,23 @@ namespace Planner
                 Width = 300,
                 Depth = 300,
             };
-
+            ThreeMain.Construct();
             ThreeMain.Purchase("Andy Megawealthy");
 
-            List<Building> buildings = new List<Building>{
-                OneMain,
-                TwoMain,
-                ThreeMain,
+            City BigCity = new City("Big City", 2020)
+            {
+                Mayor = "Steve Brownlee"
             };
 
-            foreach (Building thisBuilding in buildings)
-            {   
-                thisBuilding.Construct();
-                Console.WriteLine(thisBuilding);
-            }
+            BigCity.AddBuilding(OneMain);
+            BigCity.AddBuilding(TwoMain);
+
+           
+
+            // foreach (Building thisBuilding in BigCity._buildings)
+            // {   
+            //     Console.WriteLine(thisBuilding);
+            // }
         }
     }
 }
