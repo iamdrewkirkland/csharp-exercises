@@ -44,10 +44,10 @@ namespace Planner
 
            
 
-            // foreach (Building thisBuilding in BigCity._buildings)
-            // {   
-            //     Console.WriteLine(thisBuilding);
-            // }
+            foreach (Building thisBuilding in BigCity._buildings)
+            {   
+                Console.WriteLine(thisBuilding);
+            }
         }
     }
 }
