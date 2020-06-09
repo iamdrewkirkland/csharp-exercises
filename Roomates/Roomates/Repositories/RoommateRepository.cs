@@ -141,7 +141,7 @@ namespace Roommates.Repositories
         ///   NOTE: This method sends data to the database,
         ///   it does not get anything from the database, so there is nothing to return.
         /// </summary>
-        public void Insert(Room room)
+        public void Insert(Roommate roommate)
         {
             using (SqlConnection conn = Connection)
             {
@@ -150,14 +150,17 @@ namespace Roommates.Repositories
                 {
                     // These SQL parameters are annoying. Why can't we use string interpolation?
                     // ... sql injection attacks!!!
-                    cmd.CommandText = @"INSERT INTO Room (Name, MaxOccupancy) 
+                    cmd.CommandText = @"INSERT INTO Roommate (FirstName, LastName, RentPortion, MoveInDate, RoomId) 
                                          OUTPUT INSERTED.Id 
-                                         VALUES (@name, @maxOccupancy)";
-                    cmd.Parameters.AddWithValue("@name", room.Name);
-                    cmd.Parameters.AddWithValue("@maxOccupancy", room.MaxOccupancy);
+                                         VALUES (@Firstname, @Lastname, @RentPortion, @MovedInDate, @RoomId)";
+                    cmd.Parameters.AddWithValue("@Firstname", roommate.Firstname);
+                    cmd.Parameters.AddWithValue("@Lastname", roommate.Lastname);
+                    cmd.Parameters.AddWithValue("@RentPortion", roommate.RentPortion);
+                    cmd.Parameters.AddWithValue("@MovedInDate", roommate.MovedInDate);
+                    cmd.Parameters.AddWithValue("@RoomId", roommate.Room);
                     int id = (int)cmd.ExecuteScalar();
 
-                    room.Id = id;
+                    roommate.Id = id;
                 }
             }
 
@@ -167,7 +170,7 @@ namespace Roommates.Repositories
         /// <summary>
         ///  Updates the room
         /// </summary>
-        public void Update(Room room)
+        public void Update(Roommate roommate)
         {
             using (SqlConnection conn = Connection)
             {
@@ -178,9 +181,11 @@ namespace Roommates.Repositories
                                     SET Name = @name,
                                         MaxOccupancy = @maxOccupancy
                                     WHERE Id = @id";
-                    cmd.Parameters.AddWithValue("@name", room.Name);
-                    cmd.Parameters.AddWithValue("@maxOccupancy", room.MaxOccupancy);
-                    cmd.Parameters.AddWithValue("@id", room.Id);
+                    cmd.Parameters.AddWithValue("@Firstname", roommate.Firstname);
+                    cmd.Parameters.AddWithValue("@Lastname", roommate.Lastname);
+                    cmd.Parameters.AddWithValue("@RentPortion", roommate.RentPortion);
+                    cmd.Parameters.AddWithValue("@MovedInDate", roommate.MovedInDate);
+                    cmd.Parameters.AddWithValue("@RoomId", roommate.Room);
 
                     cmd.ExecuteNonQuery();
                 }
